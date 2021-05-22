@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+:root {
+    --bg-color: #ffffff;
+    --bg-input: #ffffff;
+    --bg-form-color: rgb(243, 244, 250);
+    --logo-color: #13405e;
+    --form-text-color: #121120;
+    font-size: 10px;
+   
+}
+
 html, * {
     margin: 0;
     padding: 0;
@@ -7,6 +17,42 @@ html, * {
 }
 
 body {
-    font-size: 10px;
+
     font-family: 'Roboto', sans-serif;
+}
+
+.logo-title {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.logo-brand-container {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    top: 50%;
+    background: var(--bg-color);
+    padding: 1.5rem;
+    color: var(--logo-color);
+}
+
+
+/* Error */
+.error-container {
+    position: absolute;
+    background: rgb(252, 218, 218);
+    min-width: 75%;
+    left: 50%;
+    top: 2rem;
+    transform: translate(-50%, 0);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+}
+ 
+#error-message {
+    font-size: 2rem;
+    margin: unset;
 }

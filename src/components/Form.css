@@ -1,0 +1,68 @@
+.form {
+    color: var(--form-text-color);
+    font-size: 1.6rem;
+}
+
+.form-holder {
+    background: var(--bg-form-color);
+    
+    width: 900px;
+    height: 700px;
+}
+
+.form .input-sign {
+    background: var(--bg-input);
+    border: 0;
+ 
+    padding: 0.8rem;
+    text-indent: 1rem;
+   
+}
+
+#form-title {
+    font-size: 3.6rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+
+.form .input-sign {
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+
+    border: 1px solid #e2e2e2;
+}
+
+.form input[type=submit] {
+    
+    padding: 0.5rem;
+    background-color: #f1eeff;
+    border: 1px solid #e2e2e2;
+
+}
+   
+.input-sign:focus {
+    box-shadow: 0 0 5px rgb(253, 240, 165);
+
+    border: 1px solid  rgb(244, 255, 182);
+}
+
+.abs-image {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    transform: scale(1.1); 
+    z-index: -1;
+}
+
+.signup {
+    border-top: 1px solid #e2e2e2;
+}
+
+.blur-effect {
+    opacity: 0.5;
+    filter:blur(1px);
+}

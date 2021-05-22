@@ -1,8 +1,8 @@
 import './Layout.css';
 
-const LayoutOne = ({children, style}) => (
-    <div style={style} className="layout-1">
-        {children} <p id="loading-text">Getting things ready...</p>
+const LayoutOne = ({children, style, styleName}) => (
+    <div style={style} className={styleName}>
+        {children}
     </div>
 )
 
