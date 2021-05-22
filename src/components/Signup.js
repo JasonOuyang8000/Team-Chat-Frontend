@@ -33,10 +33,10 @@ export default function Signup({currentForm, setCurrentForm}) {
                 setError('Passwords and Confirm Password must match')
                 return;
             }
-
+            
             const response = await axios.post(`${process.env.REACT_APP_URL}/user/signup`,{username:formParams.username, password:formParams.password});
-            console.log(response);
-          
+            
+            
 
         }
         catch(error) {

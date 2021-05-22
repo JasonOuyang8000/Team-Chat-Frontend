@@ -66,6 +66,10 @@
     align-items: center;
 }
 
+.layout-2 {
+  min-height: 100vh;
+}
+
 #loading-text {
     font-size: 2rem;
 }

@@ -6,8 +6,10 @@ import { useEffect, useState } from 'react';
 import Home from './pages/Home';
 import Loading from './pages/Loading';
 
-import { verifyUser } from './helpers';
+
 import Error from './components/Error';
+import axios from 'axios';
+import { userAuth } from './helpers';
 
 function App() {
   const [user,setUser] = useState(null);
@@ -23,22 +25,41 @@ function App() {
   }
 
   const verify = async() => {
-    if (localStorage.getItem('userToken') && localStorage.getItem('wstoken')) {
-      setLoaded(false);
-      const res = await verifyUser('workspace/verify');
-      setLoaded(true);
-      
-    }
 
-    else if (localStorage.getItem('userToken')) {
-      setLoaded(false);
-      const res = await verifyUser('user/verify')
+    try {
+      if (localStorage.getItem('usertoken') && localStorage.getItem('wstoken')) {
+        setLoaded(false);
+        const response = await axios.get(`${process.env.REACT_APP_URL}/workspace/verify`)
+    
+        setLoaded(true);
+        
+      }
+  
+      else if (localStorage.getItem('usertoken')) {
+        setLoaded(false);
+  
+        const response = await axios.get(`${process.env.REACT_APP_URL}/user/verify`, userAuth);
+        setUser(response.data.user);
+        setLoaded(true);
+      }
+    }
+  
+    catch(error) {
       setLoaded(true);
+      localStorage.clearItem('usertoken');
+      localStorage.clearItem('wstoken');
+      if (error.response) {
+        setError(error.response.data.message);
+      }
+
+    else {
+        setError(error.message);
+     }
     }
   }
 
   useEffect(() => {
-  
+    verify();
 
   }, [])
 

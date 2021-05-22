@@ -14,6 +14,12 @@ export const verifyUser = async(link) => {
 }
 
 
+export const userAuth = {
+    headers: {
+      authorization: 'Bearer ' + localStorage.getItem('usertoken')
+    }
+};
+
 // export const loginUser = async (formParams) => {
 //     try {
 //         const response = await axios.post(`${process.env.REACT_APP_URL}/user/login`,formParams);

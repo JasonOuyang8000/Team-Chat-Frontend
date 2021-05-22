@@ -1,0 +1,22 @@
+.dash-bar {
+    height: 100vh;
+
+    background: var(--bg-input);
+    width: 35rem;
+    
+    position: fixed;
+    left: 0;
+}
+
+.dash-bar-section {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    display: flex;
+    padding-left: 3rem;
+    
+}
+
+.fa-img {
+    color: var(--logo-color);
+}

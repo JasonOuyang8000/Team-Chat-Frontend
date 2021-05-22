@@ -9,6 +9,8 @@ export default function Login({currentForm, setCurrentForm}) {
     const {userState} = useContext(UserContext);
 
     const [error, setError] = userState.error;
+    const [loaded, setLoaded] = userState.loading;
+    const [user, setUser] = userState.user;
 
     const [formParams, setFormParams] = useState({username:'', password:''});
 
@@ -29,11 +31,15 @@ export default function Login({currentForm, setCurrentForm}) {
         }
 
         try {
+            setLoaded(false);
             const response = await axios.post(`${process.env.REACT_APP_URL}/user/login`,formParams);
-            console.log(response);
+            setLoaded(true);
+            localStorage.setItem('usertoken',response.data.usertoken);
+            setUser(response.data.user);
 
         }
         catch (error) {
+            setLoaded(true);
             if (error.response) {
                 setError(error.response.data.message);
             }

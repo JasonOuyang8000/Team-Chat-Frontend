@@ -11,7 +11,7 @@ const Loading = () => (
         <div class="loadingio-spinner-dual-ring-nwo1sjr8vw"><div class="ldio-bx0trw7ne8i">
         <div></div><div><div></div></div>
         </div></div>
-        <p id="loading-text">Getting things ready...</p>
+        <p id="loading-text">Hang in there...</p>
 
     </LayoutOne>
 );
