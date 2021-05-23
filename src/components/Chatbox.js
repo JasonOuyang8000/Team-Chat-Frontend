@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-export default function Chatbox() {
+export default function Chatbox({socket,active}) {
     const [text, setText] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        socket.emit('send message', {'message': text, 'channel': active});
         setText('');
-   
+        
     }
 
     return (

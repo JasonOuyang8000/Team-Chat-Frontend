@@ -8,6 +8,7 @@ export default function Signup({currentForm, setCurrentForm}) {
     const {userState} = useContext(UserContext);
 
     const [error, setError] = userState.error;
+    const [user,setUser] = userState.user
 
     const [formParams, setFormParams] = useState({username:'', password:'', confirmPassword:''});
 
@@ -36,6 +37,8 @@ export default function Signup({currentForm, setCurrentForm}) {
             
             const response = await axios.post(`${process.env.REACT_APP_URL}/user/signup`,{username:formParams.username, password:formParams.password});
             
+            localStorage.setItem('usertoken',response.data.usertoken);
+            setUser(response.data.user);
             
 
         }

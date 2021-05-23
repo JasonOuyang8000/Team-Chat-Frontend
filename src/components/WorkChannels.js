@@ -2,7 +2,10 @@ import { faComment, faComments, faHome } from "@fortawesome/free-solid-svg-icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { convertToTimestamp } from "../helpers";
 
-export default function WorkChannels({workspace, active}) {
+export default function WorkChannels({workspace, active, setActive}) {
+    const handleActive = (e,id) => {
+        if (id !== active) setActive(id);
+    }
     return (
         <div className="channel-bar">
             <h3 className="text-center channel-text mb-3">Channels</h3>
@@ -10,7 +13,7 @@ export default function WorkChannels({workspace, active}) {
 
         {   
             workspace.channels.map((channel,index) => (
-                <div key={channel.id} className={`dash-bar-section textleft ${channel.id === active ? 'active' : ''}`} >
+                <div onClick={(e) => handleActive(e,channel.id)} key={channel.id} className={`dash-bar-section textleft ${channel.id === active ? 'active' : ''}`} >
                     <div className="col-2 text-center ">
                         {channel.name === 'main' ? 
                         <FontAwesomeIcon icon={faHome} size="lg" /> :

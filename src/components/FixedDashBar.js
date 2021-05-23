@@ -31,7 +31,7 @@ export default function FixedDashBar ({setModalOpen}) {
     }
 
     return (
-        <div className="dash-bar p-3 shadow">
+        <div className="dash-bar col-2 p-3 shadow">
             <div className="brand-logo-dash mb-5 d-flex justify-content-center align-items-center">
                 <span className="logo-title me-3 ">Team Chat</span>
                 <FontAwesomeIcon className="logo-img" icon={faPeopleCarry} size='3x' />

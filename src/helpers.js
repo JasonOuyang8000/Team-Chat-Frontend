@@ -1,7 +1,6 @@
 import axios from 'axios';
 import moment from 'moment';
 
-
 export const verifyUser = async(link) => {
     try {
         const response = await axios.get(`${process.env.REACT_APP_URL}/${link}`)
@@ -32,15 +31,26 @@ export const convertToTimestamp = (date) => {
     return moment(date).unix(); 
 }
 
-// export const loginUser = async (formParams) => {
-//     try {
-//         const response = await axios.post(`${process.env.REACT_APP_URL}/user/login`,formParams);
 
-        
-//         return response;
-//     }
-//     catch (error) {
-//        console.log(error);
-//        return false;
-//     }
-// }
+
+let socket;
+export const initiateSocket = (room) => {
+
+ 
+  console.log(`Connecting socket...`);
+  if (socket && room) socket.emit('join', room);
+}
+export const disconnectSocket = () => {
+  console.log('Disconnecting socket...');
+  if(socket) socket.disconnect();
+}
+export const subscribeToChat = (cb) => {
+  if (!socket) return(true);
+  socket.on('chat', msg => {
+    console.log('Websocket event received!');
+    return cb(null, msg);
+  });
+}
+export const sendMessage = (room, message) => {
+  if (socket) socket.emit('chat', { message, room });
+}

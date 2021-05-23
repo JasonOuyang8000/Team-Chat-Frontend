@@ -6,20 +6,35 @@ import Chatbox from "./Chatbox";
 import LayoutOne from "./LayoutOne";
 import MessageBox from "./MessageBox";
 
-export default function Workview ({active, setError}) {
+export default function Workview ({active, setError, socket}) {
 
     const [messages, setMessages] = useState([]);
     const [loaded, setLoaded] = useState(true);
    
     useEffect(() => {
         getChannelMessages();
-    }, [active]);
+
+
+
+        
+    }, [ active ]);
+
+    useEffect(() => {
+      
+        socket.on('channel message',(message) =>{
+            setMessages((messages) => [...messages,message]);
+        })
+    }, []);
+
+    
+
 
     const getChannelMessages = async() => {
         try {
             setLoaded(false);
             const response = await axios.get(`${process.env.REACT_APP_URL}/workspace/channel/message/${active}`,workAuth);
             setLoaded(true);
+            setMessages(response.data.messages);
         }
         catch (error) {
             setLoaded(true);
@@ -39,8 +54,8 @@ export default function Workview ({active, setError}) {
         <div className="work-view col-10">
             {loaded ? 
               <>
-                <MessageBox messages={messages} />
-                <Chatbox/>
+                <MessageBox socket={socket} messages={messages} />
+                <Chatbox socket={socket} active={active}/>
               </>
               :
               <LayoutOne 
