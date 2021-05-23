@@ -9,7 +9,8 @@ import Loading from './pages/Loading';
 
 import Error from './components/Error';
 import axios from 'axios';
-import { userAuth } from './helpers';
+import { userAuth, workAuth } from './helpers';
+import LayoutOne from './components/LayoutOne';
 
 function App() {
   const [user,setUser] = useState(null);
@@ -29,10 +30,12 @@ function App() {
     try {
       if (localStorage.getItem('usertoken') && localStorage.getItem('wstoken')) {
         setLoaded(false);
-        const response = await axios.get(`${process.env.REACT_APP_URL}/workspace/verify`)
-    
+        const response = await axios.get(`${process.env.REACT_APP_URL}/workspace/verify`,workAuth)
+     
         setLoaded(true);
-        
+        setUser(response.data.user);
+        setWorkSpace(response.data.workspace);
+    
       }
   
       else if (localStorage.getItem('usertoken')) {
@@ -72,7 +75,15 @@ function App() {
         loaded ? 
         <Home/>
         :
+        
+        <LayoutOne 
+        styleName="layout-1"
+        style={{
+        backgroundColor:'#f9f9f9',
+        backgroundImage: 'linear-gradient(0deg, #f9f9f9 0%, #B5FFFC 100%)'
+        }}>
         <Loading />
+        </LayoutOne>
       }
     </UserContext.Provider>
   

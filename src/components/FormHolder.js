@@ -37,7 +37,7 @@ export default function FormHolder() {
             className="bg-cover abs-image" 
             style={{
             background: `url(${images[currentImageIndex]}) no-repeat center center fixed`,
-            filter: 'blur(3px)',
+            filter: 'blur(7px)',
             }}>
                 
             </div>

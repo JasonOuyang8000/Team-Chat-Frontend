@@ -2,9 +2,7 @@
     height: 100vh;
 
     background: var(--bg-input);
-    width: 35rem;
-    
-    position: fixed;
+
     left: 0;
 }
 
@@ -13,10 +11,70 @@
     margin-bottom: 2rem;
     cursor: pointer;
     display: flex;
-    padding-left: 3rem;
+    padding-left: 0.5em;
+    padding-right: 1em;
     
+}
+
+.dash-bar-section div {
+    padding: 0.5em;
+}
+
+.dash-bar .active {
+    border-radius: 2rem;
+    
+}
+
+.dash-bar .active div:first-child {
+    background: rgb(198, 225, 248);
+}
+
+.dash-bar .active div:first-child .fa-img {
+    color: #ffffff;
+}
+
+.dash-bar .active div:nth-child(2) {
+    background: rgb(20, 53, 82);
+    color: #ffffff;
+}
+
+
+.dash-bar-section div:first-child {
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+    width: 50px;
+}
+
+.dash-bar-section div:nth-child(2) {
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
 }
 
 .fa-img {
     color: var(--logo-color);
+}
+
+.modal-md {
+    width: 50%;
+}
+
+.ReactModal__Content--after-open {
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;
+    
+}
+
+.modal-inside {
+    padding: 40px;
+}
+
+.custom-textarea {
+    border-width: 2px;
+}
+
+.btn-modal {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border-radius: 20px;
+    border: 0;
+    background: rgb(226, 226, 255);
 }

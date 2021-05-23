@@ -1,8 +1,34 @@
-import { faGlobeAmericas, faKey, faPeopleCarry, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faGlobeAmericas, faKey, faPeopleCarry, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { UserContext } from "../context/UserContext";
+import { useContext, useState  } from "react";
 
-export default function FixedDashBar () {
+export default function FixedDashBar ({setModalOpen}) {
+    const {userState} = useContext(UserContext);
+    const [workspace, setWorkSpace] = userState.workspace;
+    const [error, setError] = userState.error;
+    const [user, setUser] = userState.user;
 
+    const handleCreate = () => {
+        if (user.limit === 0) {
+            setError('Ran out of workpspaces.')
+            return;
+        }
+
+        setModalOpen((prevState) => {
+            if (prevState === false) {
+                return true;
+            }
+        })
+        
+    }
+
+    const logout = () => {
+        localStorage.removeItem('usertoken');
+        localStorage.removeItem('wstoken');
+        setUser(null);
+        setWorkSpace(null);
+    }
 
     return (
         <div className="dash-bar p-3 shadow">
@@ -12,7 +38,7 @@ export default function FixedDashBar () {
             </div>
 
             <div className="dash-bar-section active textleft">
-                <div className="col-2">
+                <div className="col-2 text-center">
                 <FontAwesomeIcon className="fa-img" icon={faGlobeAmericas} size='lg' />
                 </div>
                 <div className="col-10">
@@ -21,20 +47,31 @@ export default function FixedDashBar () {
             </div>
     
             <div className="dash-bar-section ">
-                <div className="col-2">
+                <div className="col-2 text-center">
                     <FontAwesomeIcon className="fa-img" icon={faKey} size='lg' />
                  </div>
                 <div className="col-10">
-                        Your WorkSpaces
+                    Your WorkSpaces
                 </div>
                
             </div>
-            <div className="dash-bar-section ">
-                <div className="col-2">
+
+            <div onClick={handleCreate} className="dash-bar-section ">
+                <div className="col-2 text-center">
+                    <FontAwesomeIcon className="fa-img" icon={faEdit} size='lg' />
+                 </div>
+                <div className="col-10">
+                    Create a WorkSpace
+                </div>
+               
+            </div>
+
+            <div onClick={logout} className="dash-bar-section ">
+                <div className="col-2 text-center">
                     <FontAwesomeIcon className="fa-img" icon={faSignOutAlt} size='lg' />
                  </div>
                 <div className="col-10">
-                        Logout
+                     Logout
                 </div>
                
             </div>

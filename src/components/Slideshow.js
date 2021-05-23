@@ -8,7 +8,7 @@ export default function Slideshow ({images,currentImageIndex}){
     return (
         <div className="slideshow shadow">
             <img src={images[currentImageIndex]}  alt={'image-' + currentImageIndex} />
-            <div className="logo-brand-container shadow-lg">
+            <div className="logo-brand-container ">
                 <span className="logo-title">Team Chat</span><FontAwesomeIcon className="logo-img" icon={faPeopleCarry} size='3x' />
             </div>
 

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import moment from 'moment';
 
 
 export const verifyUser = async(link) => {
@@ -19,6 +20,17 @@ export const userAuth = {
       authorization: 'Bearer ' + localStorage.getItem('usertoken')
     }
 };
+
+export const workAuth = {
+    headers: {
+        authorization: 'Bearer ' + localStorage.getItem('usertoken'),
+        wstoken: localStorage.getItem('wstoken')
+    }
+};
+
+export const convertToTimestamp = (date) => {
+    return moment(date).unix(); 
+}
 
 // export const loginUser = async (formParams) => {
 //     try {

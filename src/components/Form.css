@@ -39,8 +39,9 @@
 .form input[type=submit] {
     
     padding: 0.5rem;
-    background-color: #f1eeff;
+    background-color: var(--bg-form-btn-color);
     border: 1px solid #e2e2e2;
+    
 
 }
    
@@ -65,4 +66,8 @@
 .blur-effect {
     opacity: 0.5;
     filter:blur(1px);
+}
+
+.input-disabled {
+    opacity: 0.3;
 }

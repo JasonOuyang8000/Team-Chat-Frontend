@@ -1,0 +1,63 @@
+.work-bar {
+    height: 100vh;
+
+    background: var(--bg-input);
+    width: 35rem;
+    
+    position: fixed;
+    left: 0;
+}
+
+.work-view {
+    height: 100vh;
+}
+
+.channel-text {
+    font-size: 24px;   
+}
+
+.channel-bar {
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 300px;
+    max-height: 500px;
+}
+
+.messages-placeholder {
+    height: 80%;
+    font-size: 3rem;
+}
+
+.messages-box {
+    height: 80%;
+}
+
+.chat-box {
+    height: 20%;
+    padding: 1rem;
+    background: rgb(224, 240, 230);
+    display: flex;
+    align-items: center;
+    border-top: 1px solid rgb(180, 180, 180);
+}
+
+.chat-form {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.chat-box input[type=text] {
+    border: 1px solid var(--bg-form-color);
+    height: 5rem;
+    font-size: 2rem;
+    padding: 1rem;
+    outline: none;
+}
+
+.chat-box input[type=submit] {
+    font-size: 2rem;
+    border: 0;
+    background: var(--bg-form-btn-color);
+    border: 1px solid var(--bg-form-color);
+} 

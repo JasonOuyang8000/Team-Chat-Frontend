@@ -3,8 +3,12 @@
 :root {
     --bg-color: #ffffff;
     --bg-input: #ffffff;
-    --bg-form-color: rgb(243, 244, 250);
-    --logo-color: #13405e;
+    --bg-form-color: rgb(243, 247, 250);
+
+
+    --bg-form-btn-color: #e8f3fa;
+    
+    --logo-color:  #13405e;
     --form-text-color: #121120;
     --dash-color: rgb(26, 26, 26);
     font-size: 10px;
@@ -31,7 +35,9 @@ body {
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
-    top: 50%;
+    top: 0;
+    width: 100%;
+    text-align: center;
     background: var(--bg-color);
     padding: 1.5rem;
     color: var(--logo-color);
