@@ -4,7 +4,7 @@ import WorkControls from "./WorkControls";
 
 
 
-export default function WorkDashBar({userState,workspace, active ,setActiveChannel }) {
+export default function WorkDashBar({userState,workspace, active ,setActiveChannel, socket }) {
 
 
 
@@ -16,7 +16,7 @@ export default function WorkDashBar({userState,workspace, active ,setActiveChann
             </div>
            
 
-            <WorkChannels setActive={setActiveChannel} workspace={workspace} active={active} />
+            <WorkChannels socket={socket} setActive={setActiveChannel} workspace={workspace} active={active} />
             <WorkControls  userState={userState} />
 
         </div>

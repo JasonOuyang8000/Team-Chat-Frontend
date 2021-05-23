@@ -21,8 +21,9 @@ export default function Workview ({active, setError, socket}) {
 
     useEffect(() => {
       
-        socket.on('channel message',(message) =>{
-            setMessages((messages) => [...messages,message]);
+        socket.on('channel message',(data) =>{
+   
+            setMessages((messages) => [...messages,data.message]);
         })
     }, []);
 
@@ -34,6 +35,7 @@ export default function Workview ({active, setError, socket}) {
             setLoaded(false);
             const response = await axios.get(`${process.env.REACT_APP_URL}/workspace/channel/message/${active}`,workAuth);
             setLoaded(true);
+            console.log(response.data.messages);
             setMessages(response.data.messages);
         }
         catch (error) {
@@ -48,6 +50,7 @@ export default function Workview ({active, setError, socket}) {
         }
     }
     
+   
 
     return (
     

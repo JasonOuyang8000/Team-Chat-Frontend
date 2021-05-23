@@ -1,6 +1,5 @@
 export default function MessageBox({messages}) {
 
-
     return (
         messages.length === 0 ? 
         <div className="messages-placeholder justify-content-center w-100 d-flex align-items-center">
@@ -8,13 +7,13 @@ export default function MessageBox({messages}) {
         </div>
         :
         <div className="messages-box">
+            test
             {messages.map((message) => (
                 <div key={message.id} className="message-view">
-                    {message}
+                    {message.text}
 
                 </div>
             ))}
-
 
         </div>
     )

@@ -2,9 +2,15 @@ import { faComment, faComments, faHome } from "@fortawesome/free-solid-svg-icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { convertToTimestamp } from "../helpers";
 
-export default function WorkChannels({workspace, active, setActive}) {
+export default function WorkChannels({workspace, active, setActive, socket}) {
     const handleActive = (e,id) => {
-        if (id !== active) setActive(id);
+        
+        if (id !== active) {
+            socket.emit('leave',{channel:active});
+         
+
+            setActive(id);
+        } 
     }
     return (
         <div className="channel-bar">

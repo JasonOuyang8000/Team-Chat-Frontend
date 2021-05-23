@@ -41,7 +41,7 @@ export default function Workspace() {
     useEffect(() => {
        
         if (activeChannel && socket)  {
-            socket.emit('join',{channel:activeChannel, username:user.username});
+            socket.emit('join',{channel:activeChannel, usertoken: localStorage.getItem('usertoken')});
         }
 
      
@@ -61,7 +61,7 @@ export default function Workspace() {
             > 
             <div className="workspace d-flex">
             
-                <WorkDashBar setActiveChannel={setActiveChannel} active={activeChannel} workspace={workspace} userState={userState} />
+                <WorkDashBar socket={socket} setActiveChannel={setActiveChannel} active={activeChannel} workspace={workspace} userState={userState} />
                 
                 <Workview active={activeChannel} setError={setError} socket={socket} />
 

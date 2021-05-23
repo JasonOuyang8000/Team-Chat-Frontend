@@ -5,7 +5,7 @@ export default function Chatbox({socket,active}) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        socket.emit('send message', {'message': text, 'channel': active});
+        socket.emit('send message', {'message': text, 'channel': active, usertoken: localStorage.getItem('usertoken')});
         setText('');
         
     }
