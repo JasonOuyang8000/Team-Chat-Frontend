@@ -1,18 +1,21 @@
 import { faSignInAlt, faUndo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function WorkControls({userState}) {
+export default function WorkControls({userState,socket,active}) {
     const [user,setUser] = userState.user;
     const [workspace, setWorkSpace] = userState.workspace;
-
+   
     const logout = () => {
+        socket.emit('leave',{channel:active});
         localStorage.removeItem('usertoken');
         localStorage.removeItem('wstoken');
         setWorkSpace(null);
         setUser(null);
+
     }
 
     const goBack = () => {
+        socket.emit('leave',{channel:active});
         localStorage.removeItem('wstoken');
         setWorkSpace(null);
     }

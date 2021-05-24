@@ -13,7 +13,7 @@ export default function Workspace() {
     
     const {userState} = useContext(UserContext);
     const [workspace, setWorkSpace] = userState.workspace;
-    const [activeChannel, setActiveChannel] = useState(workspace.channels.find(channel => channel.name === 'Intro').id);
+    const [activeChannel, setActiveChannel] = useState(workspace.channels.find(channel => channel.name === 'Main').id);
     const [error, setError] = userState.error;
     const [user, setUser] = userState.user;
 
@@ -44,7 +44,7 @@ export default function Workspace() {
             <LayoutOne 
             styleName="layout-2"
             style={{
-                backgroundColor:'#E4EDF1',
+                backgroundColor:'rgb(250, 253, 255)',
             }}
             > 
             <div className="workspace d-flex">

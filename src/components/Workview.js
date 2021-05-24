@@ -63,7 +63,7 @@ export default function Workview ({active, setError, socket}) {
 
     return (
     
-        <div className="work-view col-10">
+        <div className="work-view col-9">
             {loaded ? 
               <>
                 <MessageBox socket={socket} messages={messages} />

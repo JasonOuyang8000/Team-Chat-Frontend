@@ -26,9 +26,11 @@ function App() {
         const response = await axios.get(`${process.env.REACT_APP_URL}/workspace/verify`,workAuth)
      
         setLoaded(true);
-        setUser(response.data.user);
         setWorkSpace(response.data.workspace);
+        response.data.workspace.channels.sort((a,b) => a.id - b.id);
     
+     
+        setUser(response.data.user);
       }
   
       else if (localStorage.getItem('usertoken')) {

@@ -24,10 +24,12 @@ export default function IconSwitcher({type,setError,setLoaded, id, setWorkSpace}
                 },{ headers: {
                 authorization: 'Bearer ' + localStorage.getItem('usertoken')
                 }});
+               
                 setLoaded(true);
                 localStorage.setItem('wstoken',response.data.worktoken);
+                console.log(response.data.workspace);
                 setWorkSpace(response.data.workspace);
-                
+               
 
             }
             else {
@@ -36,6 +38,7 @@ export default function IconSwitcher({type,setError,setLoaded, id, setWorkSpace}
                 authorization: 'Bearer ' + localStorage.getItem('usertoken')
                 }});
                 setLoaded(true);
+                // const sortedChannels = response.data.workspace.channels.sort((a,b) => r
                 localStorage.setItem('wstoken',response.data.worktoken);
                 setWorkSpace(response.data.workspace);
             }
@@ -71,8 +74,8 @@ export default function IconSwitcher({type,setError,setLoaded, id, setWorkSpace}
         case 'User':
             return(
                 <>
-                    <form onSubmit={handleSubmit} className="form-space form-no">
-                        <input type="submit" value="Enter Space" />
+                    <form onSubmit={handleSubmit} className="form-space form-owner form-no">
+                        <input type="submit" value="Enter" />
                     </form>
                     <FontAwesomeIcon  className="end-left workspace-icon" icon={faUser} />
                 </>
@@ -81,7 +84,7 @@ export default function IconSwitcher({type,setError,setLoaded, id, setWorkSpace}
             return(
                 <>
                     <form onSubmit={handleSubmit} className="form-space form-owner">
-                        <input type="submit" value="Enter Space" />
+                        <input type="submit" value="Enter" />
                     </form>
                     <FontAwesomeIcon  className="end-left workspace-icon" icon={faCrown} />
                 </>

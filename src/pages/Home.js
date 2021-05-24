@@ -18,10 +18,12 @@ export default function Home() {
 
     switch (true) {
         case user !== null && workspace !== null:
+            console.log('test')
             return (
                 <Workspace/>
             );
         case user !== null:
+            console.log('test1')
             return (
                 <Dashboard />
             );

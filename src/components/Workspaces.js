@@ -22,7 +22,7 @@ export default function Workspaces({active,setError}) {
     const [loaded, setLoaded] = useState(true);
     const [workspace,setWorkSpace] = useContext(UserContext).userState.workspace;
 
- 
+    console.log(workspace);
  
 
     useEffect(() => {
@@ -33,7 +33,9 @@ export default function Workspaces({active,setError}) {
           }})
         .then(response => {
             setLoaded(true);
+        
             setWorkspaces(response.data.workspaces);
+            
 
         })
         .catch(error => {
@@ -101,7 +103,7 @@ export default function Workspaces({active,setError}) {
         :
 
         <LayoutOne 
-        styleName="layout-3"
+        styleName="layout-3 v-center"
         style={{
             backgroundColor:'#E4EDF1',
         }}>
