@@ -31,31 +31,13 @@ export default function FixedDashBar ({setModalOpen}) {
     }
 
     return (
-        <div className="dash-bar col-2 p-3 shadow">
+        <div className="dash-bar d-flex flex-column line-clamp dash-one col-2 pt-5 px-3 shadow">
             <div className="brand-logo-dash mb-5 d-flex justify-content-center align-items-center">
                 <span className="logo-title me-3 ">Team Chat</span>
                 <FontAwesomeIcon className="logo-img" icon={faPeopleCarry} size='3x' />
             </div>
 
-            <div className="dash-bar-section active textleft">
-                <div className="col-2 text-center">
-                <FontAwesomeIcon className="fa-img" icon={faGlobeAmericas} size='lg' />
-                </div>
-                <div className="col-10">
-                    All WorkSpaces
-                </div>
-            </div>
-    
-            <div className="dash-bar-section ">
-                <div className="col-2 text-center">
-                    <FontAwesomeIcon className="fa-img" icon={faKey} size='lg' />
-                 </div>
-                <div className="col-10">
-                    Your WorkSpaces
-                </div>
-               
-            </div>
-
+            
             <div onClick={handleCreate} className="dash-bar-section ">
                 <div className="col-2 text-center">
                     <FontAwesomeIcon className="fa-img" icon={faEdit} size='lg' />
@@ -66,8 +48,28 @@ export default function FixedDashBar ({setModalOpen}) {
                
             </div>
 
-            <div onClick={logout} className="dash-bar-section ">
+            <div className="dash-bar-section mt-5 active textleft">
                 <div className="col-2 text-center">
+                <FontAwesomeIcon className="fa-img" icon={faGlobeAmericas} size='lg' />
+                </div>
+                <div className="col-10">
+                    All WorkSpaces
+                </div>
+            </div>
+    
+            <div className="dash-bar-section">
+                <div className="col-2 text-center">
+                    <FontAwesomeIcon className="fa-img" icon={faKey} size='lg' />
+                 </div>
+                <div className="col-10">
+                    Your WorkSpaces
+                </div>
+               
+            </div>
+
+
+            <div onClick={logout} className="dash-bar-section end">
+                <div className="col-2 text-center ">
                     <FontAwesomeIcon className="fa-img" icon={faSignOutAlt} size='lg' />
                  </div>
                 <div className="col-10">

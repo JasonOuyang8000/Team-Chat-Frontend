@@ -7,7 +7,7 @@ export default function MessageBox({messages}) {
         </div>
         :
         <div className="messages-box">
-            test
+      
             {messages.map((message) => (
                 <div key={message.id} className="message-view">
                     {message.text}

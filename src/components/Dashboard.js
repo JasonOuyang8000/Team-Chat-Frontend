@@ -28,6 +28,7 @@ export default function Dashboard() {
 
     const [modalOpen, setModalOpen] = useState(false);
     const {userState} = useContext(UserContext);
+    const [active,setActive] = useState('All Workspaces');
     const [error, setError] = userState.error;
     const [loaded, setLoaded] = userState.loading;
     const [workspace, setWorkSpace] = userState.workspace;
@@ -66,7 +67,9 @@ export default function Dashboard() {
             });
             const response = await axios.post(`${process.env.REACT_APP_URL}/workspace`, {
                 ...formParams,protected: !passDisabled
-            },userAuth);
+            },{ headers: {
+                authorization: 'Bearer ' + localStorage.getItem('usertoken')
+              }});
             setLoaded(true);
             localStorage.setItem('wstoken',response.data.worktoken);
             setWorkSpace(response.data.workspace);
@@ -85,12 +88,11 @@ export default function Dashboard() {
         }
     }
 
-    console.log(formParams);
 
 
     return (
         <LayoutOne  
-        styleName="layout-2"
+        styleName="layout-2 d-flex"
         style={{
             backgroundColor:'#E4EDF1',
         }}>
@@ -113,9 +115,9 @@ export default function Dashboard() {
           
         </Modal>
 
-        <FixedDashBar setModalOpen={setModalOpen} />
+        <FixedDashBar setActive={setActive} setModalOpen={setModalOpen} />
         
-        <Dashview />
+        <Dashview active={active} setError={setError}/>
 
         </LayoutOne>
     );

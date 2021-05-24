@@ -4,7 +4,6 @@ import './Workspace.css';
 import Workview from './Workview';
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../context/UserContext";
-import { act } from 'react-dom/test-utils';
 import { convertToTimestamp} from '../helpers';
 import { SocketContext,socket } from '../context/SocketContext';
 
@@ -14,8 +13,7 @@ export default function Workspace() {
     
     const {userState} = useContext(UserContext);
     const [workspace, setWorkSpace] = userState.workspace;
-    const mainChannel = workspace.channels.find(channel => channel.name === 'Main');
-    const [activeChannel, setActiveChannel] = useState(mainChannel.id);
+    const [activeChannel, setActiveChannel] = useState(workspace.channels.find(channel => channel.name === 'Intro').id);
     const [error, setError] = userState.error;
     const [user, setUser] = userState.user;
 
@@ -26,17 +24,7 @@ export default function Workspace() {
     // }} 
 
    
-    useEffect(() => {
-       
 
-
-        
-        
-        return () => {
-            console.log('test')
-            if(socket) socket.disconnect()
-        };
-    }, [])
 
     useEffect(() => {
        
@@ -49,10 +37,10 @@ export default function Workspace() {
       
     }, [ activeChannel ]);
     
- 
+   
    
     return (
-        <SocketContext.Provider value={socket}>
+       
             <LayoutOne 
             styleName="layout-2"
             style={{
@@ -67,7 +55,7 @@ export default function Workspace() {
 
             </div>
             </LayoutOne>
-        </SocketContext.Provider>
+       
     );
 
 

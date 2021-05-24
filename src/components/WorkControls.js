@@ -12,6 +12,11 @@ export default function WorkControls({userState}) {
         setUser(null);
     }
 
+    const goBack = () => {
+        localStorage.removeItem('wstoken');
+        setWorkSpace(null);
+    }
+
     return (
         <>
             <div onClick={logout} className="dash-bar-section ">
@@ -23,7 +28,7 @@ export default function WorkControls({userState}) {
                 </div>
                
             </div>
-            <div className="dash-bar-section ">
+            <div onClick={goBack} className="dash-bar-section ">
                 <div className="col-2 text-center">
                     <FontAwesomeIcon icon={faUndo} />
                  </div>

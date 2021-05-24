@@ -17,7 +17,7 @@ export default function WorkChannels({workspace, active, setActive, socket}) {
             <h3 className="text-center channel-text mb-3">Channels</h3>
 
 
-        {   
+        {   workspace.channels.length &&
             workspace.channels.map((channel,index) => (
                 <div onClick={(e) => handleActive(e,channel.id)} key={channel.id} className={`dash-bar-section textleft ${channel.id === active ? 'active' : ''}`} >
                     <div className="col-2 text-center ">

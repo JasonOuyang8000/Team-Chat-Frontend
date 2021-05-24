@@ -11,19 +11,12 @@ import Error from './components/Error';
 import axios from 'axios';
 import { userAuth, workAuth } from './helpers';
 import LayoutOne from './components/LayoutOne';
-
+import { socket, SocketContext } from './context/SocketContext';
 function App() {
   const [user,setUser] = useState(null);
   const [workspace,setWorkSpace] = useState(null);
   const [loaded,setLoaded] = useState(true);
   const [error, setError] = useState('');
-
-  const userState = {
-    user: [user,setUser],
-    workspace: [workspace,setWorkSpace],
-    loading : [loaded,setLoaded],
-    error: [error, setError]
-  }
 
   const verify = async() => {
 
@@ -61,14 +54,31 @@ function App() {
     }
   }
 
+
+  const userState = {
+    user: [user,setUser],
+    workspace: [workspace,setWorkSpace],
+    loading : [loaded,setLoaded],
+    error: [error, setError], 
+    verify
+  }
+
+  
   useEffect(() => {
     verify();
 
+
+
+    return () => {
+       
+      if(socket) socket.disconnect()
+    };
   }, [])
 
  
 
   return (
+    <SocketContext.Provider value={socket}>
     <UserContext.Provider value={{userState}}>
       {error !== '' && <Error error={error} setError={setError} /> }
       {
@@ -86,6 +96,7 @@ function App() {
         </LayoutOne>
       }
     </UserContext.Provider>
+    </SocketContext.Provider>
   
   );
 }

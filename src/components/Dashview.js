@@ -1,9 +1,12 @@
-export default function Dashview () {
+import Workspaces from "./Workspaces";
+
+export default function Dashview ({active,setError}) {
     
 
-    return (
-        <div className="dash-view col-10">
-            
-        </div>
-    );
+    switch(active) {
+        case 'All Workspaces':
+            return <Workspaces active={active} setError={setError} />
+        default:
+            return <Workspaces active={active} />
+    }
 }

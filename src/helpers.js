@@ -33,24 +33,27 @@ export const convertToTimestamp = (date) => {
 
 
 
-let socket;
-export const initiateSocket = (room) => {
+export const isUser = (users,id) => {
+    for (let i = 0; i < users.length; i++) {
+       if (users[i].id === id) return true;
+    }
 
- 
-  console.log(`Connecting socket...`);
-  if (socket && room) socket.emit('join', room);
+    return false;
 }
-export const disconnectSocket = () => {
-  console.log('Disconnecting socket...');
-  if(socket) socket.disconnect();
-}
-export const subscribeToChat = (cb) => {
-  if (!socket) return(true);
-  socket.on('chat', msg => {
-    console.log('Websocket event received!');
-    return cb(null, msg);
-  });
-}
-export const sendMessage = (room, message) => {
-  if (socket) socket.emit('chat', { message, room });
+
+export const bgSwitch = (config) => {
+  if (config.workspace.owner.id === config.user.id) {
+      return 'Owner';
+  }
+  
+  if (isUser(config.workspace.users, config.user.id)) {
+      return 'User';
+  }
+
+  if (config.workspace.protected) {
+      return 'Protected';
+  }
+  else {
+      return 'Free'
+  }
 }

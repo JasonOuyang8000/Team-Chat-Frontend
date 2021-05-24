@@ -12,7 +12,10 @@ export default function Workview ({active, setError, socket}) {
     const [loaded, setLoaded] = useState(true);
    
     useEffect(() => {
-        getChannelMessages();
+        if (active !== null) {
+            getChannelMessages();
+        }
+      
 
 
 
@@ -20,7 +23,7 @@ export default function Workview ({active, setError, socket}) {
     }, [ active ]);
 
     useEffect(() => {
-      
+        
         socket.on('channel message',(data) =>{
    
             setMessages((messages) => [...messages,data.message]);
@@ -33,9 +36,15 @@ export default function Workview ({active, setError, socket}) {
     const getChannelMessages = async() => {
         try {
             setLoaded(false);
-            const response = await axios.get(`${process.env.REACT_APP_URL}/workspace/channel/message/${active}`,workAuth);
+     
+            const response = await axios.get(`${process.env.REACT_APP_URL}/workspace/channel/message/${active}`,{
+                headers: {
+                    wstoken: localStorage.getItem('wstoken'),
+                    authorization:'Bearer ' + localStorage.getItem('usertoken')
+                }
+            });
             setLoaded(true);
-            console.log(response.data.messages);
+
             setMessages(response.data.messages);
         }
         catch (error) {
