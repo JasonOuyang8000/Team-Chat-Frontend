@@ -33,7 +33,7 @@ export default function Workspaces({active,setError}) {
           }})
         .then(response => {
             setLoaded(true);
-        
+            console.log(response.data.workspaces);
             setWorkspaces(response.data.workspaces);
             
 
