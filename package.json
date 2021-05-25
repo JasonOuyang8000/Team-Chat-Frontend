@@ -13,6 +13,7 @@
     "bootstrap": "^5.0.1",
     "moment": "^2.29.1",
     "random-gradient": "^0.0.2",
+    "randomcolor": "^0.6.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-modal": "^3.13.1",

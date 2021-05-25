@@ -19,7 +19,7 @@ export default function MessageBox({messages}) {
       
             {messages.map((message) => (
                 <div key={message.id} className="message-view">
-                    <h3 className="mb-3 font-weight-bold message-user">{message.user.username} <span className="message-time">{moment(message.created).subtract(7, 'h').fromNow()}</span></h3>
+                    <h3 className="mb-3 font-weight-bold message-user">{message.user.username} <span className="message-time">{moment(message.created).fromNow()}</span></h3>
                     <p className="">{message.text}</p>
                     
                 </div>
