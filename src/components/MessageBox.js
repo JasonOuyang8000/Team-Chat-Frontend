@@ -8,7 +8,6 @@ export default function MessageBox({messages}) {
     useEffect(() => {
         document.querySelector('.messages-box').scrollTop = document.querySelector('.messages-box').scrollHeight
     }, [messages])
-
     return (
         messages.length === 0 ? 
         <div className=" messages-box messages-placeholder justify-content-center w-100 d-flex align-items-center">

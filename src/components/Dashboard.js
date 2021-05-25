@@ -7,6 +7,7 @@ import { useState, useContext} from "react";
 import axios from "axios";
 import { UserContext } from "../context/UserContext";
 import { userAuth } from "../helpers";
+import ImageMenu from "./ImageMenu";
 
 export default function Dashboard() {
     
@@ -24,7 +25,11 @@ export default function Dashboard() {
     const [formParams,setFormParams] = useState({
         name: '',
         password: '',
+        image: 'https://images.pexels.com/photos/1467435/pexels-photo-1467435.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
     })
+
+
+    
 
     const [modalOpen, setModalOpen] = useState(false);
     const {userState} = useContext(UserContext);
@@ -88,7 +93,12 @@ export default function Dashboard() {
         }
     }
 
+    const handleImageChange = (image) => {
+      
+        setFormParams({...formParams,image});
+    }
 
+    console.log(formParams);
 
     return (
         <LayoutOne  
@@ -105,7 +115,9 @@ export default function Dashboard() {
         >
             <form onSubmit={handleSubmit} className="form d-flex flex-column p-5">
                 <input onChange={handleChange} name="name"  className="input-sign mb-5" type="text" placeholder="Name your workspace" value={formParams.name}/>
+                <ImageMenu currentImage={formParams.image} handleImageChange={handleImageChange}/>
                 <div className="form-check form-switch d-flex justify-content-end mb-5">
+                  
                     <input onChange={handleCheck} className="form-check-input me-3" type="checkbox" id="flexSwitchCheckChecked" checked={!passDisabled}/>
                     <label className="form-check-label" htmlFor="flexSwitchCheckChecked">Protected?</label>
                 </div>

@@ -94,6 +94,12 @@
     margin-bottom: 10rem;
 }
 
+.p-font {
+    position: absolute;
+    top: -35px;
+    cursor: pointer;
+    right: 0;
+}
 
 
 .active-name {
@@ -264,4 +270,123 @@
 .message-time {
     font-size: 1.2rem;
     color: rgb(104, 102, 102);
+}
+
+.image-menu-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.image-bg {
+    height: 30rem;
+    width: 100%;
+    position: relative;
+    cursor: pointer;
+}
+
+.image-bg:hover .p-abs {
+    display: flex;
+}
+
+.p-abs {
+    position: absolute;
+
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.329);
+    height: 100%;
+    width: 100%;
+    opacity: 0.65;
+    display: none;
+
+}
+
+.image-enlarge {
+   height: 100%;
+   width: 100%;
+   object-fit: cover;
+}
+
+.input-search {
+    background: var(--bg-input);
+    border: 0;
+    padding: 0.8rem;
+    text-indent: 1rem;
+    border: 1px solid rgb(121, 121, 121);
+    outline: none;
+
+}   
+
+
+
+.btn-image-menu {
+    border: 0;
+    padding: 0.5rem;
+    background: var(--bg-form-btn-color);
+    border: 1px solid #e2e2e2;
+    cursor: pointer;
+    color: rgb(10, 7, 34);
+}
+
+.image-search {
+    display: flex;
+    flex-direction: column;  
+    font-size: 1.6rem; 
+    padding: 3rem;
+}
+
+.search-container {
+    width: 90rem;
+}
+
+.search-btn {
+    padding: 0.5rem;
+    background-color: var(--bg-form-btn-color);
+    border: 1px solid #e2e2e2;
+    cursor: pointer;
+}
+
+.search-results {
+    border-left: 1px solid #afaeae;
+    padding: 3rem;
+}
+
+.image-results {
+    height: 500px;
+}
+
+.button-wrap-btn {
+    width: 20rem;
+    text-align: center;
+    font-size: 1.6rem;
+    border: 1px solid #e2e2e2;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.confirm-color {
+    background: var(--bg-form-btn-color);
+}
+
+.cancel-color {
+    background: rgb(252, 198, 198);
+}
+
+.button-wrap {
+    justify-content: space-evenly;
+}
+
+.image-results {
+    font-size: 1.6rem;
+}
+
+.result-img {
+    height: 120px;
+    width: 120px;
+    cursor: pointer;
+    object-fit: cover;
+    border: 1px solid rgb(44, 43, 43);
 }
