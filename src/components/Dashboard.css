@@ -103,8 +103,9 @@
 
 
 .active-name {
-    font-size: 4rem;
+    font-size: 3.8rem;
     margin-bottom: 3rem;
+    font-weight: 900;
 }
 
 .workspaces-container {
@@ -114,12 +115,15 @@
 }
 
 .workspace-block {
-    height: 27rem;
-    margin: 20px;
+    height: 100%;
+    padding-bottom: 3rem;
     background: var(--bg-color);
     position: relative;
 }
 
+.w-block {
+    padding: 3rem;
+}
 
 .image-wrap {
     height: 100%;
@@ -131,33 +135,27 @@
 
 }
 .workspace-name {
-    font-size: 1.6rem;
+    font-size: 1.9rem;
     color: rgb(34, 33, 33);
     margin: unset;
     text-align: center;
+    font-weight: 800;
 }
 
-.name-wrap {
-  
-    padding: 0.8rem;
-}
 
 .Protected {
-    background: rgb(248, 185, 183);
+    background: rgb(245, 250, 255);
+
 }
 
 
 
 .Free {
-    background: green;
-}
-
-.Free .name-wrap {
-    /* background: darkgreen; */
+    background: rgb(245, 250, 255);
 }
 
 .User {
-    background: rgb(167, 199, 230);
+    background: rgb(243, 248, 253);
 }
 
 .User .name-wrap {
@@ -173,19 +171,19 @@
 }
 
 .Protected .name-wrap {
-    background: rgb(136, 77, 77);
+  background: rgb(245, 250, 255);
 }
 
 .Protected .workspace-icon {
-    color: rgb(107, 29, 29);
+    background: rgb(245, 250, 255);
 }
 
 .Owner .workspace-icon {
-    color: rgb(238, 216, 89);
+    color: rgb(218, 215, 54);
 }
 
 .User .workspace-icon {
-    color: rgb(238, 216, 89);
+    color: rgb(218, 215, 54);
 }
 
 .end-left {
@@ -201,10 +199,10 @@
 
 .form-protected input[type=password] {
 
-    border: 1px solid rgb(207, 10, 10);
-    background: rgb(136, 77, 77);
-    color: #ffffff;
-    border: 0;
+    border: 1px solid rgb(97, 97, 97);
+    background: rgb(245, 250, 255);
+    
+  
     font-size: 1.6rem;
     outline: none;
    
@@ -214,18 +212,7 @@
 }
 
 
-.form-protected input[type=password]::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #ffffff;
-    opacity: 1; /* Firefox */
-  }
-  
-  .form-protected input[type=password]:-ms-input-placeholder { /* Internet Explorer 10-11 */
-      color: #ffffff;
-  }
-  
-  .form-protected input[type=password]::-ms-input-placeholder { /* Microsoft Edge */
-      color: #ffffff;
-  }
+
 
 .form-space {
     margin-top: 3rem;
@@ -234,17 +221,20 @@
 .form-protected  input {
     display: block;
     margin: 3rem auto;
+    width: 80%;
 }
 
-.form-protected input[type="submit"] {
+
+.workspace-block input[type="submit"] {
     border: 0;
-    padding: 0.8rem;
-    width: 75%;
+    padding: 0.8rem 3rem;
+
+
     font-size: 1.6rem;
-    background: rgb(230, 84, 84);
-    color: #ffffff;
-    border-radius: 3rem;
+    background: rgb(223, 237, 252);
+    border: 1px solid rgb(146, 145, 145);
 }
+
 
 
 .form-owner input {
@@ -252,15 +242,7 @@
     margin: 6rem auto;
 }
 
-.form-owner input[type="submit"] {
-    border: 0;
-    padding: 0.8rem;
-    width: 75%;
-    font-size: 1.6rem;
-    background: rgb(86, 112, 138);
-    color: #ffffff;
-    border-radius: 3rem;
-}
+
 
 .message-user {
     font-size: 1.7rem;
@@ -355,7 +337,7 @@
 }
 
 .image-results {
-    height: 500px;
+    height: 550px;
 }
 
 .button-wrap-btn {
@@ -389,4 +371,27 @@
     cursor: pointer;
     object-fit: cover;
     border: 1px solid rgb(44, 43, 43);
+}
+
+.workspace-image {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.user-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2.3rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    margin: unset;
+    color: #ffffff;
+}
+
+.user-name-chat {
+    max-width:  230px;
+    margin-bottom: 3rem;
 }

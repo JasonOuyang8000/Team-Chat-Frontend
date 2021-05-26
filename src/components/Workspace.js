@@ -27,7 +27,7 @@ export default function Workspace() {
 
 
     useEffect(() => {
-       
+        console.log(workspace);
         if (activeChannel && socket)  {
             socket.emit('join',{channel:activeChannel, usertoken: localStorage.getItem('usertoken')});
         }

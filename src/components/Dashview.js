@@ -6,6 +6,8 @@ export default function Dashview ({active,setError}) {
     switch(active) {
         case 'All Workspaces':
             return <Workspaces active={active} setError={setError} />
+        case 'Your Workspaces':
+            return <Workspaces active={active} setError={setError} />
         default:
             return <Workspaces active={active} />
     }

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UserContext } from "../context/UserContext";
 import { useContext, useState  } from "react";
 
-export default function FixedDashBar ({setModalOpen}) {
+export default function FixedDashBar ({setModalOpen,setActive, active}) {
     const {userState} = useContext(UserContext);
     const [workspace, setWorkSpace] = userState.workspace;
     const [error, setError] = userState.error;
@@ -11,7 +11,7 @@ export default function FixedDashBar ({setModalOpen}) {
 
     const handleCreate = () => {
         if (user.limit === 0) {
-            setError('Ran out of workpspaces.')
+            setError('Ran out of workspaces.')
             return;
         }
 
@@ -48,7 +48,7 @@ export default function FixedDashBar ({setModalOpen}) {
                
             </div>
 
-            <div className="dash-bar-section mt-5 active textleft">
+            <div onClick={() => setActive('All Workspaces')} className={`dash-bar-section mt-5 ${active === 'All Workspaces' ?'active':''} textleft`}>
                 <div className="col-2 text-center">
                 <FontAwesomeIcon className="fa-img" icon={faGlobeAmericas} size='lg' />
                 </div>
@@ -57,7 +57,7 @@ export default function FixedDashBar ({setModalOpen}) {
                 </div>
             </div>
     
-            <div className="dash-bar-section">
+            <div onClick={() => setActive('Your Workspaces')} className={`dash-bar-section ${active === 'Your Workspaces' ?'active':''} `}>
                 <div className="col-2 text-center">
                     <FontAwesomeIcon className="fa-img" icon={faKey} size='lg' />
                  </div>

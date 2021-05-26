@@ -92,7 +92,7 @@ export default function IconSwitcher({type,setError,setLoaded, id, setWorkSpace}
         case 'Free':
             return(
                 <>
-                    <form onSubmit={handleSubmit} className="form-space form-no">
+                    <form onSubmit={handleSubmit} className="form-space  form-owner form-no">
                         <input type="submit" value="Join" />
                     </form>
                     <FontAwesomeIcon  className="end-left workspace-icon" icon={faSmileWink} />

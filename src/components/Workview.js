@@ -28,6 +28,8 @@ export default function Workview ({active, setError, socket}) {
    
             setMessages((messages) => [...messages,data.message]);
         })
+
+       return () => socket.off('channel message'); 
     }, []);
 
     

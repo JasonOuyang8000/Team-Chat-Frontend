@@ -25,7 +25,7 @@ export default function SearchImage({currentImage,setModalOpen, handleImageChang
             const response = await axios.get(`${process.env.REACT_APP_URL}/image?q=${text}`);
             setLoaded(true);
             if (response.data.result.photos.length) {
-                console.log(response.data.result)
+              
                 setSearchResults(response.data.result.photos);
             }
             else {
@@ -56,8 +56,8 @@ export default function SearchImage({currentImage,setModalOpen, handleImageChang
     return (
         <>
          
-            <div className="search-container d-flex ">
-                <div className="image-search d-flex flex-column justify-content-evenly col-4">
+            <div className="search-container d-flex">
+                <div className="image-search d-flex flex-column justify-content-evenly col-5">
                     <img className="image-enlarge mb-4" src={imagePlace} alt='current-work' /> 
 
                     <input onChange={(e) => {setText(e.target.value)}} className="mb-4 input-search" type="text" placeholder="Search Here" value={text} />
@@ -65,7 +65,7 @@ export default function SearchImage({currentImage,setModalOpen, handleImageChang
                     
 
                 </div>
-                <div className="search-results col-8">
+                <div className="search-results d-flex flex-column justify-content-evenly col-7">
                     <div className="image-results">
                         {loaded ? 
                             searchResults.length > 0

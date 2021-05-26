@@ -2,9 +2,10 @@ import { faCommentDots } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect } from "react";
 import moment from 'moment';
+import UserCircle from "./UserCircle";
+
 
 export default function MessageBox({messages}) {
-
     useEffect(() => {
         document.querySelector('.messages-box').scrollTop = document.querySelector('.messages-box').scrollHeight
     }, [messages])
@@ -14,13 +15,20 @@ export default function MessageBox({messages}) {
             <span className="me-5">No Messages</span><FontAwesomeIcon  icon={faCommentDots} />
         </div>
         :
-        <div className="messages-box">
+        <div className={`messages-box ${messages.length < 6 ? 'd-flex justify-content-end flex-column': ''} `}>
           
             {messages.map((message) => (
            
                 <div key={message.id} className="message-view">
-                   
-                    <h3 className="mb-3 font-weight-bold message-user">{message.user.username}  <span className="message-time">{moment.utc(message.created).fromNow()}</span></h3>
+                    <div className="user-name-chat d-flex">
+                        <div className="col-3">
+                        <UserCircle letter={message.user.username[0]} />
+                        </div>
+                        <div className="col-9">
+                            <h3 className="mb-3 font-weight-bold message-user">{message.user.username}  <span className="message-time">{moment.utc(message.created).fromNow()}</span></h3>
+                        </div>
+                    </div>
+                    
                     <p className="">{message.text}</p>
                     
                 </div>

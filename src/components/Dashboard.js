@@ -35,6 +35,7 @@ export default function Dashboard() {
     const {userState} = useContext(UserContext);
     const [active,setActive] = useState('All Workspaces');
     const [error, setError] = userState.error;
+    const [user, setUser] = userState.user;
     const [loaded, setLoaded] = userState.loading;
     const [workspace, setWorkSpace] = userState.workspace;
 
@@ -51,7 +52,7 @@ export default function Dashboard() {
 
     const handleChange = e => {
         const {name, value} = e.target;
-        console.log(name,value);
+      
         setFormParams({...formParams, [name] : value});
         
 
@@ -67,9 +68,7 @@ export default function Dashboard() {
             }
 
             setLoaded(false);
-            console.log({
-                ...formParams,protected: !passDisabled
-            });
+         
             const response = await axios.post(`${process.env.REACT_APP_URL}/workspace`, {
                 ...formParams,protected: !passDisabled
             },{ headers: {
@@ -77,11 +76,15 @@ export default function Dashboard() {
               }});
             setLoaded(true);
             localStorage.setItem('wstoken',response.data.worktoken);
+            const userLimit = response.data.workspace.users.find(u => u.id === user.id).limit;
+
+        
             setWorkSpace(response.data.workspace);
+            setUser({...user,limit: userLimit});
+
 
         }
         catch(error) {
-            console.log(error);
             setLoaded(true);
             if (error.response) {
                 setError(error.response.data.message);
@@ -98,7 +101,7 @@ export default function Dashboard() {
         setFormParams({...formParams,image});
     }
 
-    console.log(formParams);
+  
 
     return (
         <LayoutOne  
@@ -127,7 +130,7 @@ export default function Dashboard() {
           
         </Modal>
 
-        <FixedDashBar setActive={setActive} setModalOpen={setModalOpen} />
+        <FixedDashBar active={active} setActive={setActive} setModalOpen={setModalOpen} />
         
         <Dashview active={active} setError={setError}/>
 

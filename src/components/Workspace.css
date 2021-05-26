@@ -89,7 +89,10 @@
 }
 
 .message-view {
-    min-height: 10rem;
+    min-height: 14rem;
     border-top: 1px solid rgb(218, 217, 217);
-    padding: 4rem;
+    padding-left: 4rem;
+    padding-top: 2rem;
+    padding-right: 6rem;
+    padding-bottom: 2rem;
 }
