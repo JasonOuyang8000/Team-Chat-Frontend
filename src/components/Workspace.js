@@ -13,7 +13,8 @@ export default function Workspace() {
     
     const {userState} = useContext(UserContext);
     const [workspace, setWorkSpace] = userState.workspace;
-    const [activeChannel, setActiveChannel] = useState(workspace.channels.find(channel => channel.name === 'Main').id);
+    const [activeChannel, setActiveChannel] = useState(workspace.user_alerts.find(alert => alert.channel.name === 'Main').channel.id);
+    const [alerts, setAlerts] = useState(workspace.user_alerts);
     const [error, setError] = userState.error;
     const [user, setUser] = userState.user;
 
@@ -23,22 +24,33 @@ export default function Workspace() {
     //     wstoken: localStorage.getItem('wstoken'),
     // }} 
 
-   
+    useEffect(() => {
+        const alertsCopy = [...alerts];
+
+        if (!alertsCopy[0].read) {
+            socket.emit('channel alert', {'channel': activeChannel, usertoken: localStorage.getItem('usertoken')});
+            alertsCopy[0].read = true;
+            setAlerts(alertsCopy);
+        }
+    },[]);
 
 
     useEffect(() => {
-        console.log(workspace);
-        console.log(user);
+        
         if (activeChannel && socket)  {
             socket.emit('join',{channel:activeChannel, usertoken: localStorage.getItem('usertoken')});
         }
+
 
      
 
       
     }, [ activeChannel ]);
-    
-   
+
+
+  
+    console.log(workspace.user_alerts);
+
    
     return (
        
@@ -50,7 +62,7 @@ export default function Workspace() {
             > 
             <div className="workspace d-flex">
             
-                <WorkDashBar socket={socket} setActiveChannel={setActiveChannel} active={activeChannel} workspace={workspace} userState={userState} />
+                <WorkDashBar alerts={alerts} setAlerts={setAlerts} socket={socket} setActiveChannel={setActiveChannel} active={activeChannel} workspace={workspace} userState={userState} />
                 
                 <Workview active={activeChannel} setError={setError} socket={socket} />
 

@@ -96,3 +96,7 @@
     padding-right: 6rem;
     padding-bottom: 2rem;
 }
+
+.alert-circle {
+    color: rgba(77, 140, 199, 0.966);
+}

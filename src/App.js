@@ -27,7 +27,7 @@ function App() {
      
         setLoaded(true);
         setWorkSpace(response.data.workspace);
-        response.data.workspace.channels.sort((a,b) => a.id - b.id);
+      
     
      
         setUser(response.data.user);
