@@ -80,7 +80,7 @@ export default function Workspaces({active,setError}) {
     
 
     useEffect(() => {
-        
+        console.log(active)
         setLoaded(false);
         if (active === 'All Workspaces') {
             getAllWorkSpaces();
@@ -90,7 +90,7 @@ export default function Workspaces({active,setError}) {
             getYourWorkSpaces();
         }
        
-        
+     
    
    
      

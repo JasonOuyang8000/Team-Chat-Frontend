@@ -27,7 +27,6 @@ export default function IconSwitcher({type,setError,setLoaded, id, setWorkSpace}
                
                 setLoaded(true);
                 localStorage.setItem('wstoken',response.data.worktoken);
-                console.log(response.data.workspace);
                 setWorkSpace(response.data.workspace);
                
 

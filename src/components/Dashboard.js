@@ -74,12 +74,10 @@ export default function Dashboard() {
             },{ headers: {
                 authorization: 'Bearer ' + localStorage.getItem('usertoken')
               }});
-            setLoaded(true);
             localStorage.setItem('wstoken',response.data.worktoken);
-            const userLimit = response.data.workspace.users.find(u => u.id === user.id).limit;
-
-        
             setWorkSpace(response.data.workspace);
+            setLoaded(true);
+            const userLimit = response.data.workspace.users.find(u => u.id === user.id).limit;
             setUser({...user,limit: userLimit});
 
 
@@ -101,7 +99,7 @@ export default function Dashboard() {
         setFormParams({...formParams,image});
     }
 
-  
+    console.log(active);
 
     return (
         <LayoutOne  
