@@ -49,7 +49,7 @@ export default function Workspace() {
 
 
   
-    console.log(workspace.user_alerts);
+
 
    
     return (

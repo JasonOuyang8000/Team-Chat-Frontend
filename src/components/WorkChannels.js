@@ -28,7 +28,6 @@ export default function WorkChannels({workspace,alerts, active, setActive, socke
     useEffect(() => {
          
         socket.on('channel alert',(data) =>{
-            console.log(active,data.channelId)
             if (active === data.channelId) {
               
                socket.emit('channel alert', {'channel': active, usertoken: localStorage.getItem('usertoken')});
