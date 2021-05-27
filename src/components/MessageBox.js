@@ -5,17 +5,23 @@ import moment from 'moment';
 import UserCircle from "./UserCircle";
 
 
-export default function MessageBox({messages}) {
+export default function MessageBox({messages,image, imageState}) {
     useEffect(() => {
         document.querySelector('.messages-box').scrollTop = document.querySelector('.messages-box').scrollHeight
-    }, [messages])
+    }, [messages]);
+
+
     return (
+        <>  
+          
+        {imageState && <img className="w-space-image" alt="workspace" src={image.split('?')[0]} />}
+        {
         messages.length === 0 ? 
-        <div className=" messages-box messages-placeholder justify-content-center w-100 d-flex align-items-center">
-            <span className="me-5">No Messages</span><FontAwesomeIcon  icon={faCommentDots} />
+        <div className={`${imageState ? 'msg-box-state': '' } messages-box messages-placeholder justify-content-center w-100 d-flex align-items-center`}>
+            <div className="hold"><span className="me-5">No Messages</span><FontAwesomeIcon  icon={faCommentDots} /></div>
         </div>
         :
-        <div className={`messages-box ${messages.length < 6 ? 'd-flex justify-content-end flex-column': ''} `}>
+        <div className={`messages-box ${imageState ? messages.length < 4 ? 'd-flex justify-content-end flex-column': '' : messages.length < 6 ? 'd-flex justify-content-end flex-column': ''} ${imageState ? 'image-state': ''}`}>
           
             {messages.map((message) => (
            
@@ -35,5 +41,7 @@ export default function MessageBox({messages}) {
             ))}
 
         </div>
+        }
+        </>
     )
 };

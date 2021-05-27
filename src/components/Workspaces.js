@@ -12,7 +12,7 @@ import IconSwitcher from "./IconSwitcher";
 
 export default function Workspaces({active,setError}) {
 
-
+    
 
 
 
@@ -80,7 +80,7 @@ export default function Workspaces({active,setError}) {
     
 
     useEffect(() => {
-        console.log(active)
+     
         setLoaded(false);
         if (active === 'All Workspaces') {
             getAllWorkSpaces();
@@ -110,7 +110,7 @@ export default function Workspaces({active,setError}) {
                     workspaces.map(workspace => (
                         <div key={workspace.id} className="col-12 col-lg-6 col-xl-3  w-block">
                            
-                            <div className={`workspace-block shadow-lg ${bgSwitch({workspace,user})}`}>
+                            <div className={`workspace-block workspace-b-shadow shadow-lg ${bgSwitch({workspace,user})}`}>
                                 <img className="workspace-image mb-2" alt={workspace.name} src={workspace.image} />
                                 <div className="name-wrap px-4 my-3 ">
                                     <h3 className="workspace-name line-clamp">{workspace.name === '' ? 'Blank Name': workspace.name}</h3>

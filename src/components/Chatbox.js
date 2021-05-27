@@ -2,7 +2,7 @@ import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 
-export default function Chatbox({socket,active}) {
+export default function Chatbox({socket,active, imageState}) {
     const [text, setText] = useState('');
     const [btnDisabled, setBtnDisabled] = useState(true);
 
@@ -35,8 +35,8 @@ export default function Chatbox({socket,active}) {
     return (
         <div  className="chat-box">
             <form onSubmit={handleSubmit} className="chat-form mx-auto">
-                <input onChange={handleChange} value={text} className="col-10 " type="text" placeholder="Enter a Message..."/>
-                <button type="submit" disabled={btnDisabled}><FontAwesomeIcon icon={faPaperPlane} /> </button>
+                <input onChange={handleChange} value={text} className={`col-10  ${imageState ? 'shadow-lg': ''}`} type="text" placeholder="Enter a Message..."/>
+                <button className={` ${imageState ? 'shadow-lg': ''}`} type="submit" disabled={btnDisabled}><FontAwesomeIcon icon={faPaperPlane} /> </button>
             </form>
            
         </div>

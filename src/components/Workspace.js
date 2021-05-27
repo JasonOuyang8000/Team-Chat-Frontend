@@ -16,13 +16,15 @@ export default function Workspace() {
     const [activeChannel, setActiveChannel] = useState(workspace.user_alerts.find(alert => alert.channel.name === 'Main').channel.id);
     const [alerts, setAlerts] = useState(workspace.user_alerts);
     const [error, setError] = userState.error;
-    const [user, setUser] = userState.user;
+    const [isImage, setIsImage] = useState(false);
+
+
+
+
+    
 
    
-    // , {query: {
-    //     usertoken: localStorage.getItem('usertoken'),
-    //     wstoken: localStorage.getItem('wstoken'),
-    // }} 
+
 
     useEffect(() => {
         const alertsCopy = [...alerts];
@@ -32,6 +34,12 @@ export default function Workspace() {
             alertsCopy[0].read = true;
             setAlerts(alertsCopy);
         }
+
+        if (localStorage.getItem('setImage')) {
+            setIsImage(true);
+        }
+
+
     },[]);
 
 
@@ -48,7 +56,7 @@ export default function Workspace() {
     }, [ activeChannel ]);
 
 
-  
+    console.log(workspace);
 
 
    
@@ -57,14 +65,32 @@ export default function Workspace() {
             <LayoutOne 
             styleName="layout-2"
             style={{
-                backgroundColor:'rgb(250, 253, 255)',
+                background:'rgba(255, 255, 255, 0.1)',
             }}
             > 
+          
+
             <div className="workspace d-flex">
             
-                <WorkDashBar alerts={alerts} setAlerts={setAlerts} socket={socket} setActiveChannel={setActiveChannel} active={activeChannel} workspace={workspace} userState={userState} />
+                <WorkDashBar 
+                alerts={alerts} 
+                setAlerts={setAlerts} 
+                socket={socket} 
+                setActiveChannel={setActiveChannel}
+                active={activeChannel} 
+                workspace={workspace} 
+                userState={userState} 
+                setIsImage={setIsImage}
+                isImage={isImage}
+                />
                 
-                <Workview active={activeChannel} setError={setError} socket={socket} />
+                <Workview 
+                active={activeChannel} 
+                setError={setError} 
+                socket={socket}
+                image={workspace.image} 
+                imageState={isImage}
+                 />
 
             </div>
             </LayoutOne>

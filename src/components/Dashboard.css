@@ -1,15 +1,19 @@
 .dash-bar {
     height: 100vh;
 
-    background: var(--bg-input);
+ 
 
     left: 0;
+}
+
+.dash-bar-color {
+    background: var(--bg-input);
 }
 
 .dash-bar-section {
     font-size: 1.6rem;
     margin-bottom: 2rem;
-    cursor: pointer;
+  
     display: flex;
     padding-left: 0.5em;
     padding-right: 1em;
@@ -124,6 +128,11 @@
 
 
 }
+
+.workspace-block:hover {
+    box-shadow: 0 0.2rem 1rem rgba(49, 72, 99, 0.801) !important;
+}
+
 
 .w-block {
     padding: 6rem 3rem;
@@ -415,3 +424,4 @@
     font-size: 2rem;
     font-weight: 800;
 }
+

@@ -44,8 +44,8 @@ function App() {
   
     catch(error) {
       setLoaded(true);
-      localStorage.clearItem('usertoken');
-      localStorage.clearItem('wstoken');
+      // localStorage.clearItem('usertoken');
+      // localStorage.clearItem('wstoken');
       if (error.response) {
         setError(error.response.data.message);
       }

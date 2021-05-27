@@ -60,7 +60,7 @@ export default function WorkChannels({workspace,alerts, active, setActive, socke
 
         {   alerts.length &&
             alerts.map((alert,index) => (
-                <div onClick={(e) => handleActive(e,alert.channel.id,index)} key={alert.channel.id} className={`dash-bar-section textleft ${alert.channel.id === active ? 'active' : ''}`} >
+                <div onClick={(e) => handleActive(e,alert.channel.id,index)} key={alert.channel.id} className={`dash-bar-section textleft pointer ${alert.channel.id === active ? 'active' : ''}`} >
                     <div className="col-2 text-center ">
                         {alert.channel.name === 'main' ? 
                         <FontAwesomeIcon icon={faHome} size="lg" /> :

@@ -6,7 +6,7 @@ import Chatbox from "./Chatbox";
 import LayoutOne from "./LayoutOne";
 import MessageBox from "./MessageBox";
 
-export default function Workview ({active, setError, socket}) {
+export default function Workview ({active, setError, socket, image, imageState}) {
 
     const [messages, setMessages] = useState([]);
     const [loaded, setLoaded] = useState(true);
@@ -68,8 +68,8 @@ export default function Workview ({active, setError, socket}) {
         <div className="work-view col-9">
             {loaded ? 
               <>
-                <MessageBox socket={socket} messages={messages} />
-                <Chatbox socket={socket} active={active}/>
+                <MessageBox socket={socket} messages={messages} image={image} imageState={imageState}/>
+                <Chatbox imageState={imageState} socket={socket} active={active}/>
               </>
               :
               <LayoutOne 

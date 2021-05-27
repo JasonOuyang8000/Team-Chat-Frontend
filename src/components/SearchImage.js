@@ -57,8 +57,7 @@ export default function SearchImage({currentImage,setModalOpen, handleImageChang
         setModalOpen(false);
     }
 
-    console.log(searchResults.page);
-    console.log(passPage(searchResults.result,searchResults.page))
+
 
     return (
         <>

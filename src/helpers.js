@@ -61,6 +61,8 @@ export const bgSwitch = (config) => {
 
 export const passPage = (arr,page) => {
     const items = 9 * page;
+
+    
     if (items > arr.length) {
         return arr.slice(items,arr.length); //Remaining
     }
