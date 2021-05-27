@@ -7,7 +7,7 @@ const Error = ({error, setError}) => {
     useEffect(() => {
         let timer = setTimeout(()=> {
             setError('');
-        },3000);
+        },1000);
 
         return () => clearTimeout(timer);
     });

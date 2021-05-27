@@ -12,7 +12,7 @@ export default function WorkDashBar({userState,workspace, active ,setActiveChann
         
         <div className="dash-bar work-bar-color p-3 col-3">
             <div className=" mb-5 d-flex justify-content-center align-items-center">
-                <span className="workspace-title me-3 ">{workspace.name}</span>
+                <span className="workspace-title me-3 line-clamp">{workspace.name}</span>
             </div>
            
 

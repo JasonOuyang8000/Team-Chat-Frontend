@@ -108,12 +108,12 @@ export default function Workspaces({active,setError}) {
             <div className="row">
                 {
                     workspaces.map(workspace => (
-                        <div key={workspace.id} className="col-12 col-lg-6 col-xl-3 mb-5 w-block">
+                        <div key={workspace.id} className="col-12 col-lg-6 col-xl-3  w-block">
                            
                             <div className={`workspace-block shadow-lg ${bgSwitch({workspace,user})}`}>
-                                <img className="workspace-image mb-3" alt={workspace.name} src={workspace.image} />
+                                <img className="workspace-image mb-2" alt={workspace.name} src={workspace.image} />
                                 <div className="name-wrap px-4 my-3 ">
-                                    <h3 className="workspace-name">{workspace.name === '' ? 'Blank Name': workspace.name}</h3>
+                                    <h3 className="workspace-name line-clamp">{workspace.name === '' ? 'Blank Name': workspace.name}</h3>
                                 </div>
 
                                 <IconSwitcher 

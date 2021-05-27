@@ -35,10 +35,10 @@ body {
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
-    top: 0;
-    width: 100%;
+    top: 2rem;
+    width: 60%;
     text-align: center;
-    background: var(--bg-color);
+    background: rgba(255, 255, 255, 0.747);
     padding: 1.5rem;
     color: var(--logo-color);
 }

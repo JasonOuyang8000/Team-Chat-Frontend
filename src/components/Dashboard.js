@@ -62,6 +62,11 @@ export default function Dashboard() {
         e.preventDefault();
         try {
 
+            if (formParams.name === '' ) {
+                setError('WorkSpace Name cannot be blank!');
+                return;
+            }
+
             if (!passDisabled && formParams.password === '') {
                 setError('Password cannot be blank!');
                 return;

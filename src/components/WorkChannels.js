@@ -11,7 +11,7 @@ export default function WorkChannels({workspace,alerts, active, setActive, socke
             const alertsCopy = [...alerts];
             if (!alertsCopy[index].read) {
                
-                socket.emit('channel alert', {'channel': id, usertoken: localStorage.getItem('usertoken')});
+                socket.emit('channel alert', {'channel': id,index, usertoken: localStorage.getItem('usertoken')});
                 alertsCopy[index].read = true;
                 
                 setAlerts(alertsCopy);
@@ -26,10 +26,11 @@ export default function WorkChannels({workspace,alerts, active, setActive, socke
     }
 
     useEffect(() => {
-         
+   
+        socket.removeAllListeners('channel alert');
         socket.on('channel alert',(data) =>{
             if (active === data.channelId) {
-              
+                
                socket.emit('channel alert', {'channel': active, usertoken: localStorage.getItem('usertoken')});
             
                 

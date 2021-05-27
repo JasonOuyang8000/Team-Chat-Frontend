@@ -25,7 +25,7 @@ export default function Workview ({active, setError, socket}) {
     useEffect(() => {
         
         socket.on('channel message',(data) =>{
-   
+            
             setMessages((messages) => [...messages,data.message]);
         })
 

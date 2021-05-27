@@ -57,3 +57,16 @@ export const bgSwitch = (config) => {
       return 'Free'
   }
 }
+
+
+export const passPage = (arr,page) => {
+    const items = 9 * page;
+    if (items > arr.length) {
+        return arr.slice(items,arr.length); //Remaining
+    }
+
+    return arr.slice(items - 9, items );
+  
+
+
+}
